@@ -14,9 +14,9 @@ function App() {
 
   useEffect(()=>{
     const words = inputText.split(" ");
-    const lastWord = words[words.length - 1];
-    if (customDictionary[lastWord.toLocaleLowerCase()]) {
-      setSuggestedText(customDictionary[lastWord.toLocaleLowerCase()]);
+    const lastWord = words[words.length - 1].toLocaleLowerCase();
+    if (customDictionary[lastWord]) {
+      setSuggestedText(customDictionary[lastWord]);
     } else {
       setSuggestedText("");
     }
