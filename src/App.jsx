@@ -14,12 +14,9 @@ function App() {
 
   useEffect(()=>{
     const words = inputText.split(" ");
-    const lastWord = words[words.length - 1].toLocaleLowerCase();
-    if (customDictionary[lastWord]) {
-      setSuggestedText(customDictionary[lastWord]);
-    } else {
-      setSuggestedText("");
-    }
+    const correctedWords=words.map(word=>customDictionary[word.toLocaleLowerCase()]||word);
+    const firstCorrectedText=correctedWords.find((word,index)=>word!==words[index]);
+    setSuggestedText(firstCorrectedText);
   },[inputText])
   return (
        <div>
